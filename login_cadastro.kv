@@ -1,0 +1,145 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+
+<Login>:
+    orientation: "vertical"
+    padding: [100, 100]
+    spacing: 10
+
+
+    Image:
+        source: '/Users/aluno.sesipaulista/Desktop/sos/images/logo.png'
+        size_hint: None, None
+        size: 745, 150
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+    Label:
+        text: "LOGIN DE CADASTRO"
+        font_size: 40
+        font_name: 'Georgia'
+        color: get_color_from_hex('#610C27')
+
+    Label:
+        text: "Nome de usuário:"
+        font_name: 'Arial'
+        color: get_color_from_hex('#AC9C8D')
+        font_size: 20
+    TextInput:
+        id: username_input
+        hint_text: "Nome de usuário ..."
+
+    Label:
+        text: "Senha:"
+        font_name: 'Arial'
+        color: get_color_from_hex('#AC9C8D')
+        font_size: 20
+    TextInput:
+        id: senha_input
+        hint_text: "Digite sua senha ..."
+        password: True
+
+    Button:
+        id: cadastrar_button
+        text: "Entrar"
+        background_color: (0.380, 0.047, 0.153, 1)
+    Button:
+        id: login_button
+        text: "Não possui uma conta? Cadastre-se"
+        background_color: (0.675, 0.612, 0.553, 1)
+
+    
+    Label:
+        text: "Esqueceu a senha?"
+        font_name: 'Arial'
+        color: get_color_from_hex('#AC9C8D')
+        font_size: 15
+
+<NewWindow>:
+    orientation: 'vertical'
+    padding: [120, 120]
+    spacing: 10
+
+    Label:
+        text: 'Tela Cadastro'
+        font_size: 40
+        font_name: 'Georgia'
+        color: get_color_from_hex('#610C27')
+
+    Label:
+        text: "Nome de usuário:"
+        font_name: 'Arial'
+        color: get_color_from_hex('#AC9C8D')
+        font_size: 20
+    TextInput:
+        id: username_input
+        hint_text: "Nome de usuário ..."
+
+    Label:
+        text: "Email:"
+        font_name: 'Arial'
+        color: get_color_from_hex('#AC9C8D')
+        font_size: 20
+    TextInput:
+        id: email_input
+        hint_text: "Digite seu email ..."
+
+    Label:
+        text: "Celular:"
+        font_name: 'Arial'
+        color: get_color_from_hex('#AC9C8D')
+        font_size: 20
+    TextInput:
+        id: celular_input
+        hint_text: "Digite o número do seu celular ..."
+
+    Label:
+        text: "Senha:"
+        font_name: 'Arial'
+        color: get_color_from_hex('#AC9C8D')
+        font_size: 20
+    TextInput:
+        id: senha_input
+        hint_text: "Digite sua senha ..."
+        password: True
+
+    Button:
+        id: button_cadastrar
+        text: 'Cadastrar'
+        background_color: (0.380, 0.047, 0.153, 1)
+
+<TelaInicial>
+    orientation: 'vertical'
+    padding: [120, 120]
+    spacing: 10
+
+    Image:
+        source: '/Users/aluno.sesipaulista/Desktop/sos/images/logo.png'
+        size_hint: None, None
+        size: 500, 100
+        pos_hint: {'center_x': 0.1, 'center_y': 0.1}
+
+    Label:
+        text: 'Escolha o botão correspondente a sua situação'
+        font_size: 30
+        font_name: 'Georgia'
+        color: get_color_from_hex('#610C27')
+
+    Button:
+        id: botao_ocorrencia
+        text: 'Ocorrência'
+        background_color: (255, 255, 0, 1)
+
+    Button:
+        id: minha_denuncia
+        text: 'Minha Denúncia'
+        background_color: (0.227, 0.176, 0.157, 1)
+
+    Button:
+        id: emergencia
+        text: 'Emergência'
+        background_color: (1,0,0,1)
+
+    Button:
+        id: denuncia_outra_pessoa
+        text: 'Denúncia de Ajuda (Para outra pessoa)'
+        background_color: (0.227, 0.176, 0.157, 1)
+
