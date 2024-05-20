@@ -121,10 +121,15 @@ class TelaInicial(FloatLayout):
         # Widgets são acessíveis após o arquivo KV ser carregado
 
         self.botao_ocorrencia = self.ids.botao_ocorrencia
+        self.botao_ocorrencia.bind(on_release=partial(self.funcao_entrar_ocorrencia))
         self.minha_denuncia = self.ids.minha_denuncia
         self.minha_denuncia.bind(on_release=partial(self.entrar_minha_ocorrencia))
         self.denuncia_outra_pessoa = self.ids.denuncia_outra_pessoa
         self.denuncia_outra_pessoa.bind(on_release=partial(self.abrir_nova_ocorrencia))
+
+    def funcao_entrar_ocorrencia(self, instance):
+        func_ocorrencia = Ocorrencia()
+        func_ocorrencia.open()
 
     def abrir_nova_ocorrencia(self, instance):
         abrir_ocorrencia = AbrirOcorrencia()
@@ -193,6 +198,29 @@ class AbrirOcorrencia(FloatLayout):
         self._window.background_color = (0, 0, 0, 1)  # Definir o fundo do ModalView como preto
         self._window.open()
 
+
+class Ocorrencia(FloatLayout):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        Window.clearcolor = (0, 0, 0, 0)
+        self.arg1 = None  # Inicializando arg1 como None
+        self.arg2 = None  # Inicializando arg2 como None
+
+    def on_kv_post(self, base_widget):
+        # Widgets são acessíveis após o arquivo KV ser carregado
+        self.enviar_ocorrencia_botao = self.ids.enviar_ocorrencia_botao
+        self.seta_voltar = self.ids.seta_voltar
+        self.seta_voltar.bind(on_release=partial(self.apertar_voltar))
+
+    def apertar_voltar(self, instance):
+        voltar_casinha = TelaInicial()
+        voltar_casinha.open()
+
+    def open(self):
+        self._window = ModalView(size_hint=(1, 1))
+        self._window.add_widget(self)
+        self._window.background_color = (0, 0, 0, 1)  # Definir o fundo do ModalView como preto
+        self._window.open()
 
 class MyApp(App):
     def build(self):
