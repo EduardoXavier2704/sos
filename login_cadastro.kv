@@ -1,145 +1,489 @@
 #:import get_color_from_hex kivy.utils.get_color_from_hex
 
+<TelaPrincipal>
+    orientation: "vertical"
+
+    FloatLayout:
+
+        Image:
+            source:'/Users/debor/Desktop/sos/images/logoinicialapp.jpg'
+            size_hint: None, None
+            size: 1200, 400
+            pos_hint: {'center_x': 0.5, 'center_y': 0.55}
+
+        Button:
+            id: inicial_para_login
+            text: "Entrar"
+            background_color: (0.380, 0.047, 0.153, 1)
+            size_hint: None, None
+            size: 225, 50
+            pos_hint: {'center_x': 0.5, 'top': 0.25}
+
 <Login>:
     orientation: "vertical"
-    padding: [100, 100]
+    padding: [60, 60]
     spacing: 10
 
+    FloatLayout:
 
-    Image:
-        source: '/Users/aluno.sesipaulista/Desktop/sos/images/logo.png'
-        size_hint: None, None
-        size: 745, 150
-        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        Image:
+            source: '/Users/debor/Desktop/sos/images/logo.png'
+            size_hint: None, None
+            size: 745, 150
+            pos_hint: {'center_x': 0.5, 'center_y': 0.82}
 
-    Label:
-        text: "LOGIN DE CADASTRO"
-        font_size: 40
-        font_name: 'Georgia'
-        color: get_color_from_hex('#610C27')
+        Label:
+            text: 'LOGIN DE CADASTRO'
+            font_size: 30
+            font_name: 'Georgia'
+            color: (0.69, 0.52, 0.58, 1)
+            size_hint: None, None
+            size: self.texture_size[0], self.texture_size[1]
+            pos_hint: {'center_x': 0.502, 'top': 0.732}
 
-    Label:
-        text: "Nome de usuário:"
-        font_name: 'Arial'
-        color: get_color_from_hex('#AC9C8D')
-        font_size: 20
-    TextInput:
-        id: username_input
-        hint_text: "Nome de usuário ..."
+        Label:
+            text: "LOGIN DE CADASTRO"
+            font_size: 30
+            font_name: 'Georgia'
+            color: get_color_from_hex('#610C27')
+            size_hint: None, None
+            size: self.texture_size[0], self.texture_size[1]
+            pos_hint: {'center_x': 0.5, 'top': 0.73}
 
-    Label:
-        text: "Senha:"
-        font_name: 'Arial'
-        color: get_color_from_hex('#AC9C8D')
-        font_size: 20
-    TextInput:
-        id: senha_input
-        hint_text: "Digite sua senha ..."
-        password: True
+        Label:
+            text: "Nome de usuário:"
+            font_name: 'Arial'
+            color: get_color_from_hex('#AC9C8D')
+            font_size: 18
+            size_hint: None, None
+            size: self.texture_size[0], self.texture_size[1]
+            pos_hint: {'center_x': 0.5, 'top': 0.66}
+        TextInput:
+            id: username_input
+            hint_text: "Nome de usuário ..."
+            size_hint: None, None
+            size: 550, 35
+            pos_hint: {'center_x': 0.5, 'center_y': 0.56}
 
-    Button:
-        id: cadastrar_button
-        text: "Entrar"
-        background_color: (0.380, 0.047, 0.153, 1)
-    Button:
-        id: login_button
-        text: "Não possui uma conta? Cadastre-se"
-        background_color: (0.675, 0.612, 0.553, 1)
+        Label:
+            text: "Senha:"
+            font_name: 'Arial'
+            color: get_color_from_hex('#AC9C8D')
+            font_size: 18
+            size_hint: None, None
+            size: self.texture_size[0], self.texture_size[1]
+            pos_hint: {'center_x': 0.5, 'top': 0.5}
 
-    
-    Label:
-        text: "Esqueceu a senha?"
-        font_name: 'Arial'
-        color: get_color_from_hex('#AC9C8D')
-        font_size: 15
+        TextInput:
+            id: senha_input
+            hint_text: "Digite sua senha ..."
+            password: True
+            size_hint: None, None
+            size: 550, 35
+            pos_hint: {'center_x': 0.5, 'top': 0.44}
+
+        Button:
+            id: cadastrar_button
+            text: "Entrar"
+            background_color: (0.380, 0.047, 0.153, 1)
+            size_hint: None, None
+            size: 550, 35
+            pos_hint: {'center_x': 0.5, 'top': 0.34}
+            
+        Button:
+            id: login_button
+            text: "Não possui uma conta? Cadastre-se"
+            background_color: (0.675, 0.612, 0.553, 1)
+            size_hint: None, None
+            size: 550, 35
+            pos_hint: {'center_x': 0.5, 'top': 0.27}
+
+        
+        Label:
+            text: "Esqueceu a senha?"
+            font_name: 'Arial'
+            color: get_color_from_hex('#AC9C8D')
+            font_size: 15
+            size_hint: None, None
+            size: self.texture_size[0], self.texture_size[1]
+            pos_hint: {'center_x': 0.5, 'top': 0.18}
 
 <NewWindow>:
     orientation: 'vertical'
-    padding: [120, 120]
+    padding: [60, 60]
     spacing: 10
 
-    Label:
-        text: 'Tela Cadastro'
-        font_size: 40
-        font_name: 'Georgia'
-        color: get_color_from_hex('#610C27')
+    FloatLayout:
 
-    Label:
-        text: "Nome de usuário:"
-        font_name: 'Arial'
-        color: get_color_from_hex('#AC9C8D')
-        font_size: 20
-    TextInput:
-        id: username_input
-        hint_text: "Nome de usuário ..."
+        Button:
+            id: botao_login
+            background_color: (0.380, 0.047, 0.153, 1)
+            size_hint: None, None
+            size: 26, 24
+            pos_hint: {'center_x': 0.04, 'top': 0.97}
 
-    Label:
-        text: "Email:"
-        font_name: 'Arial'
-        color: get_color_from_hex('#AC9C8D')
-        font_size: 20
-    TextInput:
-        id: email_input
-        hint_text: "Digite seu email ..."
+        Image:
+            source: '/Users/debor/Desktop/sos/images/arrowleft.jpeg'
+            size_hint: None, None
+            size: 745, 30
+            pos_hint: {'center_x': 0.04, 'center_y': .95}
 
-    Label:
-        text: "Celular:"
-        font_name: 'Arial'
-        color: get_color_from_hex('#AC9C8D')
-        font_size: 20
-    TextInput:
-        id: celular_input
-        hint_text: "Digite o número do seu celular ..."
+        Label:
+            text: 'Tela Cadastro'
+            font_size: 40
+            font_name: 'Georgia'
+            color: get_color_from_hex('#610C27')
+            size_hint: None, None
+            size: self.texture_size[0], self.texture_size[1]
+            pos_hint: {'center_x': 0.5, 'top': 0.88}
 
-    Label:
-        text: "Senha:"
-        font_name: 'Arial'
-        color: get_color_from_hex('#AC9C8D')
-        font_size: 20
-    TextInput:
-        id: senha_input
-        hint_text: "Digite sua senha ..."
-        password: True
+        Label:
+            text: "Nome de usuário:"
+            font_name: 'Arial'
+            color: get_color_from_hex('#AC9C8D')
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size[0], self.texture_size[1]
+            pos_hint: {'center_x': 0.5, 'top': 0.76}
 
-    Button:
-        id: button_cadastrar
-        text: 'Cadastrar'
-        background_color: (0.380, 0.047, 0.153, 1)
+        TextInput:
+            id: username_input
+            hint_text: "Nome de usuário ..."
+            size_hint: None, None
+            size: 550, 35
+            pos_hint: {'center_x': 0.5, 'center_y': 0.66}
+
+        Label:
+            text: "Email:"
+            font_name: 'Arial'
+            color: get_color_from_hex('#AC9C8D')
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size[0], self.texture_size[1]
+            pos_hint: {'center_x': 0.5, 'top': 0.6}
+
+        TextInput:
+            id: email_input
+            hint_text: "Digite seu email ..."
+            size_hint: None, None
+            size: 550, 35
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        Label:
+            text: "Celular:"
+            font_name: 'Arial'
+            color: get_color_from_hex('#AC9C8D')
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size[0], self.texture_size[1]
+            pos_hint: {'center_x': 0.5, 'top': 0.44}
+
+        TextInput:
+            id: celular_input
+            hint_text: "Digite o número do seu celular ..."
+            size_hint: None, None
+            size: 550, 35
+            pos_hint: {'center_x': 0.5, 'center_y': 0.34}
+
+        Label:
+            text: "Senha:"
+            font_name: 'Arial'
+            color: get_color_from_hex('#AC9C8D')
+            font_size: 20
+            size_hint: None, None
+            size: self.texture_size[0], self.texture_size[1]
+            pos_hint: {'center_x': 0.5, 'top': 0.28}
+        TextInput:
+            id: senha_input
+            hint_text: "Digite sua senha ..."
+            password: True
+            size_hint: None, None
+            size: 550, 35
+            pos_hint: {'center_x': 0.5, 'center_y': 0.18}
+
+        Button:
+            id: button_cadastrar
+            text: 'Cadastrar'
+            background_color: (0.380, 0.047, 0.153, 1)
+            size_hint: None, None
+            size: 550, 35
+            pos_hint: {'center_x': 0.5, 'top': 0.12}
 
 <TelaInicial>
     orientation: 'vertical'
-    padding: [120, 120]
+    padding: [60, 60]
     spacing: 10
 
-    Image:
-        source: '/Users/aluno.sesipaulista/Desktop/sos/images/logo.png'
-        size_hint: None, None
-        size: 500, 100
-        pos_hint: {'center_x': 0.1, 'center_y': 0.1}
+    FloatLayout:
 
-    Label:
-        text: 'Escolha o botão correspondente a sua situação'
-        font_size: 30
-        font_name: 'Georgia'
-        color: get_color_from_hex('#610C27')
+        Image:
+            source: '/Users/debor/Desktop/sos/images/logo.png'
+            size_hint: None, None
+            size: 745, 70
+            pos_hint: {'center_x': 0.05, 'center_y': .92}
 
-    Button:
-        id: botao_ocorrencia
-        text: 'Ocorrência'
-        background_color: (255, 255, 0, 1)
+        Label:
+            text: 'Tela Inicial'
+            font_size: 45
+            font_name: 'Georgia'
+            color: (0.69, 0.52, 0.58, 1) 
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'center_x': 0.502, 'top': 0.832} 
 
-    Button:
-        id: minha_denuncia
-        text: 'Minha Denúncia'
-        background_color: (0.227, 0.176, 0.157, 1)
+        
+        Label:
+            text: 'Tela Inicial'
+            font_size: 45
+            font_name: 'Georgia'
+            color: get_color_from_hex('#610C27') 
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {'center_x': 0.5, 'top': 0.83}
 
-    Button:
-        id: emergencia
-        text: 'Emergência'
-        background_color: (1,0,0,1)
+        
+        Label:
+            text: 'Escolha o botão correspondente a sua situação:'
+            font_size: 22
+            font_name: 'Arial'
+            color: (0.69, 0.52, 0.58, 1)
+            size_hint: None, None
+            size: self.texture_size[0], self.texture_size[1]
+            pos_hint: {'center_x': 0.502, 'top': 0.702}
 
-    Button:
-        id: denuncia_outra_pessoa
-        text: 'Denúncia de Ajuda (Para outra pessoa)'
-        background_color: (0.227, 0.176, 0.157, 1)
+        Label:
+            text: 'Escolha o botão correspondente a sua situação:'
+            font_size: 22
+            font_name: 'Arial'
+            color: get_color_from_hex('#610C27')
+            size_hint: None, None
+            size: self.texture_size[0], self.texture_size[1]
+            pos_hint: {'center_x': 0.5, 'top': 0.70}
 
+
+        Button:
+            id: botao_ocorrencia
+            text: 'Ocorrência'
+            background_color: (159, 134, 0, 1)
+            size_hint: None, None
+            size: 525, 70
+            pos_hint: {'center_x': 0.5, 'top': 0.58}
+
+        Button:
+            id: minha_denuncia
+            text: 'Minhas Ocorrências'
+            background_color: (0.5, 0.5, 0.5, 1)
+            size_hint: None, None
+            size: 525, 70
+            pos_hint: {'center_x': 0.5, 'top': 0.44}
+
+        Button:
+            id: denuncia_outra_pessoa
+            text: 'Denúncia de Ajuda (Para outra pessoa)'
+            background_color: (0,1,0,1)
+            size_hint: None, None
+            size: 525, 70
+            pos_hint: {'center_x': 0.5, 'top': 0.30}
+
+
+<ListaOcorrencias>:
+    orientation: 'vertical'
+    padding: [80, 80]
+    spacing: 10
+
+    FloatLayout:
+
+        Button:
+            id: voltar_telainicial
+            background_color: (0, 0.5, 1, 1)
+            size_hint: None, None
+            size: 30, 28
+            pos_hint: {'center_x': 0.05, 'top': 0.97}
+
+        Image:
+            source: '/Users/debor/Desktop/sos/images/iconecasa.png'
+            size_hint: None, None
+            size: 745, 30
+            pos_hint: {'center_x': 0.05, 'center_y': .95}
+
+        Label:
+            text: 'Minhas Ocorrências'
+            font_size: 40
+            font_name: 'Georgia'
+            color: get_color_from_hex('#610C27')
+            size_hint: None, None
+            size: self.texture_size[0], self.texture_size[1]  # Define o tamanho do Label de acordo com o texto
+            pos_hint: {'center_x': 0.5, 'top': 0.85}  # Posiciona o Label abaixo dos botões e centralizado horizontalmente
+
+        Label:
+            text: 'Denúncia:Assalto'
+            font_size: 20
+            font_name: 'Georgia'
+            color: get_color_from_hex('#E7D7C9')
+            size_hint: None, None
+            size: self.texture_size[0], self.texture_size[1]  # Define o tamanho do Label de acordo com o texto
+            pos_hint: {'center_x': 0.5, 'top': 0.7}  # Posiciona o Label abaixo dos botões e centralizado horizontalmente
+
+
+        Button:
+            id: lista_ocorrencia
+            text: 'Abra sua lista'
+            background_color: (0, 0.5, 1, 1)
+            size_hint: None, None
+            size: 150, 50
+            pos_hint: {'center_x': 0.5, 'top': 0.65}  # Posiciona o botão no topo e centralizado horizontalmente
+            color: (0, 0, 0, 1)  # Cor do texto
+
+        Label:
+            text: 'Denúncia:Assédio'
+            font_size: 20
+            font_name: 'Georgia'
+            color: get_color_from_hex('#E7D7C9')
+            size_hint: None, None
+            size: self.texture_size[0], self.texture_size[1]  # Define o tamanho do Label de acordo com o texto
+            pos_hint: {'center_x': 0.5, 'top': 0.5}  # Posiciona o Label abaixo dos botões e centralizado horizontalmente
+
+        Button:
+            id: lista_ocorrencia
+            text: 'Abra sua lista'
+            background_color: (0, 0.5, 1, 1)
+            size_hint: None, None
+            size: 150, 50
+            pos_hint: {'center_x': 0.5, 'top': 0.45}  # Posiciona o botão no topo e centralizado horizontalmente
+            color: (0, 0, 0, 1)  # Cor do texto
+
+        Label:
+            text: 'Nessa janela estarão todas as suas ocorrências.'
+            font_size: 20
+            font_name: 'Georgia'
+            color: get_color_from_hex('#BE8F6E')
+            size_hint: None, None
+            size: self.texture_size[0], self.texture_size[1]  # Define o tamanho do Label de acordo com o texto
+            pos_hint: {'center_x': 0.5, 'top': 0.27}
+
+        Label:
+            text: 'Aperte nos botões para listar as denúncias já enviadas!'
+            font_size: 20
+            font_name: 'Georgia'
+            color: get_color_from_hex('#BE8F6E')
+            size_hint: None, None
+            size: self.texture_size[0], self.texture_size[1]  # Define o tamanho do Label de acordo com o texto
+            pos_hint: {'center_x': 0.5, 'top': 0.23}
+
+<AbrirOcorrencia>
+    orientation: 'vertical'
+    padding: [60, 60]
+    spacing: 10
+
+    FloatLayout:
+
+        Button:
+            id: voltarparatelainicial
+            background_color: (0, 0.5, 1, 1)
+            size_hint: None, None
+            size: 30, 28
+            pos_hint: {'center_x': 0.05, 'top': 0.97}
+
+        Image:
+            source: '/Users/debor/Desktop/sos/images/iconecasa.png'
+            size_hint: None, None
+            size: 745, 30
+            pos_hint: {'center_x': 0.05, 'center_y': .95}
+
+        Label:
+            text: "Informações de Cadastro:"
+            font_size: 28
+            font_name: 'Georgia'
+            color: get_color_from_hex('#610C27')
+            size_hint: None, None
+            size: self.texture_size[0], self.texture_size[1]
+            pos_hint: {'center_x': 0.5, 'top': 0.9}
+
+        Label:
+            text: "Nome Completo:"
+            font_name: 'Arial'
+            color: get_color_from_hex('#AC9C8D')
+            font_size: 15
+            size_hint: None, None
+            size: self.texture_size[0], self.texture_size[1]
+            pos_hint: {'center_x': 0.17, 'top': 0.79}
+
+        TextInput:
+            id: nome_completo
+            hint_text: "Nome Completo ..."
+            size_hint: None, None
+            size: 400, 35
+            pos_hint: {'center_x': 0.5, 'center_y': 0.78}
+
+        Label:
+            text: "CPF:"
+            font_name: 'Arial'
+            color: get_color_from_hex('#AC9C8D')
+            font_size: 15
+            size_hint: None, None
+            size: self.texture_size[0], self.texture_size[1]
+            pos_hint: {'center_x': 0.22, 'top': 0.73}
+
+        TextInput:
+            id: cpf
+            hint_text: "Seu CPF... "
+            size_hint: None, None
+            size: 400, 35
+            pos_hint: {'center_x': 0.5, 'center_y': 0.72}
+
+        Label:
+            text: "Data de Nascimento:"
+            font_name: 'Arial'
+            color: get_color_from_hex('#AC9C8D')
+            font_size: 15
+            size_hint: None, None
+            size: self.texture_size[0], self.texture_size[1]
+            pos_hint: {'center_x': 0.15, 'top': 0.67}
+
+        TextInput:
+            id: data_nascimento
+            hint_text: "Sua data de nasc... "
+            size_hint: None, None
+            size: 400, 35
+            pos_hint: {'center_x': 0.5, 'center_y': 0.66}
+
+        Label:
+            text: "E-mail:"
+            font_name: 'Arial'
+            color: get_color_from_hex('#AC9C8D')
+            font_size: 15
+            size_hint: None, None
+            size: self.texture_size[0], self.texture_size[1]
+            pos_hint: {'center_x': 0.21, 'top': 0.61}
+
+        TextInput:
+            id: email
+            hint_text: "Seu email... "
+            size_hint: None, None
+            size: 400, 35
+            pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+
+
+        Label:
+            text: "Descrição:"
+            font_name: 'Arial'
+            color: get_color_from_hex('#AC9C8D')
+            font_size: 15
+            size_hint: None, None
+            size: self.texture_size[0], self.texture_size[1]
+            pos_hint: {'center_x': 0.19, 'top': 0.51}
+
+        TextInput:
+            id: ocorrencia_prox
+            hint_text: "Registre o acontecimento do seu próximo... "
+            size_hint: None, None
+            size: 400, 100
+            pos_hint: {'center_x': 0.5, 'center_y': 0.43}
+
+        Button:
+            id: botao_enviar_ocorrencia
+            text: 'Enviar'
+            background_color: (0.380, 0.047, 0.153, 1)
+            size_hint: None, None
+            size: 225, 45
+            pos_hint: {'center_x': 0.5, 'top': 0.28}
