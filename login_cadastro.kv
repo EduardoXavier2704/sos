@@ -6,7 +6,7 @@
     FloatLayout:
 
         Image:
-            source:'/Users/debor/Desktop/sos/images/logoinicialapp.jpg'
+            source:'/Users/aluno.sesipaulista/Desktop/sos/images/logoinicialapp.jpg'
             size_hint: None, None
             size: 1200, 400
             pos_hint: {'center_x': 0.5, 'center_y': 0.55}
@@ -23,11 +23,13 @@
     orientation: "vertical"
     padding: [60, 60]
     spacing: 10
+    invalid_login: False
+    invalid_senha: False
 
     FloatLayout:
 
         Image:
-            source: '/Users/debor/Desktop/sos/images/logo.png'
+            source: '/Users/aluno.sesipaulista/Desktop/sos/images/logo.png'
             size_hint: None, None
             size: 745, 150
             pos_hint: {'center_x': 0.5, 'center_y': 0.82}
@@ -64,6 +66,7 @@
             size_hint: None, None
             size: 550, 35
             pos_hint: {'center_x': 0.5, 'center_y': 0.56}
+            background_color: (1, 0, 0, 0.5) if root.invalid_login else (1, 1, 1, 1)
 
         Label:
             text: "Senha:"
@@ -81,6 +84,7 @@
             size_hint: None, None
             size: 550, 35
             pos_hint: {'center_x': 0.5, 'top': 0.44}
+            background_color: (1, 0, 0, 0.5) if root.invalid_senha else (1, 1, 1, 1)
 
         Button:
             id: cadastrar_button
@@ -117,13 +121,13 @@
 
         Button:
             id: botao_login
-            background_color: (0.380, 0.047, 0.153, 1)
+            background_color: (0.380, 0.047, 0.153, 0)
             size_hint: None, None
             size: 26, 24
             pos_hint: {'center_x': 0.04, 'top': 0.97}
 
         Image:
-            source: '/Users/debor/Desktop/sos/images/arrowleft.jpeg'
+            source: '/Users/aluno.sesipaulista/Desktop/sos/images/arrowleft.jpeg'
             size_hint: None, None
             size: 745, 30
             pos_hint: {'center_x': 0.04, 'center_y': .95}
@@ -217,7 +221,7 @@
     FloatLayout:
 
         Image:
-            source: '/Users/debor/Desktop/sos/images/logo.png'
+            source: '/Users/aluno.sesipaulista/Desktop/sos/images/logo.png'
             size_hint: None, None
             size: 745, 70
             pos_hint: {'center_x': 0.05, 'center_y': .92}
@@ -295,15 +299,15 @@
 
         Button:
             id: voltar_telainicial
-            background_color: (0, 0.5, 1, 1)
+            background_color: (0, 0.5, 1, 0)
             size_hint: None, None
             size: 30, 28
             pos_hint: {'center_x': 0.05, 'top': 0.97}
 
         Image:
-            source: '/Users/debor/Desktop/sos/images/iconecasa.png'
+            source: '/Users/aluno.sesipaulista/Desktop/sos/images/iconecasa.png'
             size_hint: None, None
-            size: 745, 30
+            size: 745, 34
             pos_hint: {'center_x': 0.05, 'center_y': .95}
 
         Label:
@@ -313,7 +317,7 @@
             color: (0.69, 0.52, 0.58, 1)
             size_hint: None, None
             size: self.texture_size[0], self.texture_size[1]  # Define o tamanho do Label de acordo com o texto
-            pos_hint: {'center_x': 0.502, 'top': 0.852}
+            pos_hint: {'center_x': 0.501, 'top': 0.8515}
 
         Label:
             text: 'Minhas Ocorrências'
@@ -390,15 +394,15 @@
 
         Button:
             id: voltarparatelainicial
-            background_color: (0, 0.5, 1, 1)
+            background_color: (0, 0.5, 1, 0)
             size_hint: None, None
             size: 30, 28
             pos_hint: {'center_x': 0.05, 'top': 0.97}
 
         Image:
-            source: '/Users/debor/Desktop/sos/images/iconecasa.png'
+            source: '/Users/aluno.sesipaulista/Desktop/sos/images/iconecasa.png'
             size_hint: None, None
-            size: 745, 30
+            size: 745, 34
             pos_hint: {'center_x': 0.05, 'center_y': .95}
 
         Label:
@@ -408,7 +412,7 @@
             color: (0.69, 0.52, 0.58, 1)
             size_hint: None, None
             size: self.texture_size[0], self.texture_size[1]
-            pos_hint: {'center_x': 0.502, 'top': 0.902}
+            pos_hint: {'center_x': 0.501, 'top': 0.901}
 
         Label:
             text: "Ocorrência de Ajuda ao Próximo:"
@@ -564,13 +568,13 @@
 
         Button:
             id: seta_voltar
-            background_color: (0.380, 0.047, 0.153, 1)
+            background_color: (0.380, 0.047, 0.153, 0)
             size_hint: None, None
             size: 26, 24
             pos_hint: {'center_x': 0.05, 'top': 0.96}
 
         Image:
-            source: '/Users/debor/Desktop/sos/images/iconecasa.png'
+            source: '/Users/aluno.sesipaulista/Desktop/sos/images/iconecasa.png'
             size_hint: None, None
             size: 745, 30
             pos_hint: {'center_x': 0.05, 'center_y': .95}
@@ -740,13 +744,13 @@
 
         Button:
             id: setinha
-            background_color: (0.380, 0.047, 0.153, 1)
+            background_color: (0.380, 0.047, 0.153, 0)
             size_hint: None, None
             size: 26, 24
             pos_hint: {'center_x': 0.04, 'top': 0.97}
 
         Image:
-            source: '/Users/debor/Desktop/sos/images/arrowleft.jpeg'
+            source: '/Users/aluno.sesipaulista/Desktop/sos/images/arrowleft.jpeg'
             size_hint: None, None
             size: 745, 30
             pos_hint: {'center_x': 0.04, 'center_y': .95}
@@ -758,7 +762,7 @@
             color: (0.69, 0.52, 0.58, 1)
             size_hint: None, None
             size: self.texture_size[0], self.texture_size[1]
-            pos_hint: {'center_x': 0.502, 'top': 0.902}
+            pos_hint: {'center_x': 0.502, 'top': 0.9015}
 
         Label:
             text: "Lista de Assalto"
@@ -776,7 +780,7 @@
             color: (0.69, 0.52, 0.58, 1)
             size_hint: None, None
             size: self.texture_size[0], self.texture_size[1]
-            pos_hint: {'center_x': 0.502, 'top': 0.802}
+            pos_hint: {'center_x': 0.5015, 'top': 0.8015}
 
         Label:
             text: "Aperte o botão para listar as denúncias:"
@@ -803,13 +807,13 @@
 
         Button:
             id: miniseta
-            background_color: (0.380, 0.047, 0.153, 1)
+            background_color: (0.380, 0.047, 0.153, 0)
             size_hint: None, None
             size: 26, 24
             pos_hint: {'center_x': 0.04, 'top': 0.97}
 
         Image:
-            source: '/Users/debor/Desktop/sos/images/arrowleft.jpeg'
+            source: '/Users/aluno.sesipaulista/Desktop/sos/images/arrowleft.jpeg'
             size_hint: None, None
             size: 745, 30
             pos_hint: {'center_x': 0.04, 'center_y': .95}

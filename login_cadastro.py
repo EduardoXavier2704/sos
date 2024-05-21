@@ -57,6 +57,8 @@ class Login(FloatLayout):
         Window.clearcolor = (0, 0, 0, 0)
         self.arg1 = None  # Inicializando arg1 como None
         self.arg2 = None  # Inicializando arg2 como None
+        self.invalid_login = False
+        self.invalid_senha = False
 
     def on_kv_post(self, base_widget):
         # Widgets são acessíveis após o arquivo KV ser carregado
@@ -69,8 +71,8 @@ class Login(FloatLayout):
         self.login_button.bind(on_release=partial(self.create_new_window))
 
     def check_login(self, instance):
-        nome = self.username_input.get()
-        senha = self.senha_input.get()
+        nome = self.username_input.text
+        senha = self.senha_input.text
 
         user = login(mydb, nome, senha)
 
@@ -78,9 +80,12 @@ class Login(FloatLayout):
             print("Login bem-sucedido!")
             telainicial = TelaInicial()
             telainicial.open()
+            self.invalid_login = False
+            self.invalid_senha = False
         else:
             print("Credenciais inválidas!")
-            return None
+            self.invalid_login = True
+            self.invalid_senha = True
 
     def create_new_window(self, instance):
         new_window = NewWindow()
@@ -116,12 +121,13 @@ class NewWindow(FloatLayout):
 
     def register_user(self, instance):
         user_data = {
-            'nome': self.username_input.get(),
-            'email': self.email_input.get(),
-            'celular': self.celular_input.get(),
-            'senha': self.senha_input.get()
+            'nome': self.username_input.text,
+            'email': self.email_input.text,
+            'celular': self.celular_input.text,
+            'senha': self.senha_input.text
         }
         register(mydb, user_data['nome'], user_data['email'], user_data['celular'], user_data['senha'])
+
 
     def open(self):
         self._window = ModalView(size_hint=(1, 1))
@@ -241,6 +247,7 @@ class Ocorrencia(FloatLayout):
     def on_kv_post(self, base_widget):
         # Widgets são acessíveis após o arquivo KV ser carregado
         self.enviar_ocorrencia_botao = self.ids.enviar_ocorrencia_botao
+        self.enviar_ocorrencia_botao.bind(on_release=partial(self.insert_ocorrencia))
         self.seta_voltar = self.ids.seta_voltar
         self.seta_voltar.bind(on_release=partial(self.apertar_voltar))
         self.nomeseu_completo = self.ids.nomeseu_completo
@@ -250,6 +257,17 @@ class Ocorrencia(FloatLayout):
         self.seuendereco = self.ids.seuendereco
         self.suareferencia = self.ids.suareferencia
         self.suadescricao = self.ids.suadescricao
+
+    def insert_ocorrencia(self, instance):
+        Nome_completo_proximo = self.nomeseu_completo.text
+        Cpf_proximo = self.seucpf.text
+        Data_nasc_proximo = self.suadata_nasc.text
+        Email_proximo = self.seuemail.text
+        Endereco_proximo = self.seuendereco.text
+        Local_referencia = self.suareferencia
+        #Descricao_ocorrencia = self.suadescricao.text
+
+        insert(mydb, Nome_completo_proximo, Cpf_proximo, Data_nasc_proximo, Email_proximo, Endereco_proximo, Local_referencia)
 
     def apertar_voltar(self, instance):
         voltar_casinha = TelaInicial()

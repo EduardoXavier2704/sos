@@ -12,7 +12,7 @@ def insert(mydb, Nome, Cpf, Data_nasc, Email, Endereco, Lugar_referencia):
 
     mycursor.close()
 
-def insert_proximo(mydb, Nome_completo_proximo, Cpf_proximo, Data_nasc_proximo, Email_proximo, Endereco_proximo, Local_referencia):
+def insert(mydb, Nome_completo_proximo, Cpf_proximo, Data_nasc_proximo, Email_proximo, Endereco_proximo, Local_referencia):
     mycursor = mydb.cursor()
 
     sql = "INSERT INTO ocorrencia_proximo (Nome_completo_proximo, Cpf_proximo, Data_nasc_proximo, Email_proximo, Endereco_proximo, Local_referencia) VALUES (%s, %s, %s, %s, %s, %s)"
@@ -100,7 +100,7 @@ def register(mydb, nome, email, celular, senha):
 def login(mydb, nome, senha):
     mycursor = mydb.cursor()
 
-    sql = "SELECT * FROM usuarios WHERE nome = %s AND senha = %s"
+    sql = "SELECT * FROM registro_usuario WHERE nome = %s AND senha = %s"
     val = (nome, senha)
 
     mycursor.execute(sql, val)
