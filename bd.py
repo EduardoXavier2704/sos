@@ -1,8 +1,8 @@
-def insert(mydb, Nome, Cpf, Data_nasc, Email, Endereco, Lugar_referencia):
+def insert(mydb, Nome, Cpf, Data_nasc, Email_ou_telefone, Endereco, Lugar_referencia, Descricao):
     mycursor = mydb.cursor()
 
-    sql = "INSERT INTO ocorrencia (Nome, Cpf, Data_nasc, Email, Endereco, Lugar_referencia) VALUES (%s, %s, %s, %s, %s, %s)"
-    val = (Nome, Cpf, Data_nasc, Email, Endereco, Lugar_referencia)
+    sql = "INSERT INTO ocorrencia (Nome, Cpf, Data_nasc, Email_ou_telefone, Endereco, Lugar_referencia, Descricao) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+    val = (Nome, Cpf, Data_nasc, Email_ou_telefone, Endereco, Lugar_referencia, Descricao)
 
     mycursor.execute(sql, val)
 
@@ -12,11 +12,11 @@ def insert(mydb, Nome, Cpf, Data_nasc, Email, Endereco, Lugar_referencia):
 
     mycursor.close()
 
-def insert(mydb, Nome_completo_proximo, Cpf_proximo, Data_nasc_proximo, Email_proximo, Endereco_proximo, Local_referencia):
+def insert_proximo(mydb, Nome_completo_proximo, Cpf_proximo, Data_nasc_proximo, Email_ou_telefone_proximo, Endereco_proximo, Local_referencia, Descricao):
     mycursor = mydb.cursor()
 
-    sql = "INSERT INTO ocorrencia_proximo (Nome_completo_proximo, Cpf_proximo, Data_nasc_proximo, Email_proximo, Endereco_proximo, Local_referencia) VALUES (%s, %s, %s, %s, %s, %s)"
-    val = (Nome_completo_proximo, Cpf_proximo, Data_nasc_proximo, Email_proximo, Endereco_proximo, Local_referencia)
+    sql = "INSERT INTO ocorrencia_proximo (Nome_completo_proximo, Cpf_proximo, Data_nasc_proximo, Email_ou_telefone_proximo, Endereco_proximo, Local_referencia, Descricao) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+    val = (Nome_completo_proximo, Cpf_proximo, Data_nasc_proximo, Email_ou_telefone_proximo, Endereco_proximo, Local_referencia, Descricao)
 
     mycursor.execute(sql, val)
 
@@ -60,7 +60,7 @@ def delete(mydb, titulo):
 def query(mydb):
     mycursor = mydb.cursor()
 
-    sql = "SELECT titulo, autor, ano, status_ FROM livros"
+    sql = "SELECT Nome, Cpf, Data_nasc, Email_ou_telefone, Endereco, Lugar_referencia, Descricao FROM ocorrencia"
     mycursor.execute(sql)
 
     rows = mycursor.fetchall()
@@ -70,14 +70,61 @@ def query(mydb):
 
     # Itera sobre cada linha retornada pela consulta e adiciona os dados formatados à lista
     for row in rows:
-        # Verifica se o valor é None antes de formatá-lo na string de impressão
-        titulo = row[0] if row[0] is not None else ""
-        autor = row[1] if row[1] is not None else ""
-        ano = row[2] if row[2] is not None else ""
-        status_ = "Disponível" if row[3] else "Indisponível" if row[3] is not None else ""
+        # Formata os dados adequadamente
+        nome = row[0] if row[0] else ""
+        cpf = row[1] if row[1] else ""
+        data_nasc = row[2] if row[2] else ""
+        email_telefone = row[3] if row[3] else ""
+        endereco = row[4] if row[4] else ""
+        lugar_referencia = row[5] if row[5] else ""
+        descricao = row[6] if row[6] else ""
 
-        dados.append("{: <20} {: <30} {: <10} {: <10}".format(
-            titulo, autor, ano, status_))
+        # Adiciona os dados formatados à lista
+        dados.append({
+            "Nome": nome,
+            "CPF": cpf,
+            "Data de Nascimento": data_nasc,
+            "Email ou Telefone": email_telefone,
+            "Endereço": endereco,
+            "Lugar de Referência": lugar_referencia,
+            "Descrição": descricao
+        })
+
+    # Retorna a lista de dados
+    return dados
+
+def lista(mydb):
+    mycursor = mydb.cursor()
+
+    sql = "SELECT Nome_completo_proximo, Cpf_proximo, Data_nasc_proximo, Email_ou_telefone_proximo, Endereco_proximo, Local_referencia, Descricao FROM ocorrencia_proximo"
+    mycursor.execute(sql)
+
+    rows = mycursor.fetchall()
+
+    # Cria uma lista vazia para armazenar os dados
+    dados = []
+
+    # Itera sobre cada linha retornada pela consulta e adiciona os dados formatados à lista
+    for row in rows:
+        # Formata os dados adequadamente
+        nome = row[0] if row[0] else ""
+        cpf = row[1] if row[1] else ""
+        data_nasc = row[2] if row[2] else ""
+        email_telefone = row[3] if row[3] else ""
+        endereco = row[4] if row[4] else ""
+        lugar_referencia = row[5] if row[5] else ""
+        descricao = row[6] if row[6] else ""
+
+        # Adiciona os dados formatados à lista
+        dados.append({
+            "Nome": nome,
+            "CPF": cpf,
+            "Data de Nascimento": data_nasc,
+            "Email ou Telefone": email_telefone,
+            "Endereço": endereco,
+            "Lugar de Referência": lugar_referencia,
+            "Descrição": descricao
+        })
 
     # Retorna a lista de dados
     return dados

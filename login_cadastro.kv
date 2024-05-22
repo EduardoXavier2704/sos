@@ -791,7 +791,6 @@
             size: self.texture_size[0], self.texture_size[1]
             pos_hint: {'center_x': 0.5, 'top': 0.8}
 
-
         Button:
             id: listar_assalto
             text: 'Listar'
@@ -799,6 +798,18 @@
             size_hint: None, None
             size: 225, 45
             pos_hint: {'center_x': 0.5, 'top': 0.2}
+
+        ScrollView:
+            size_hint: None, None
+            size: 400, max(300, lista.height)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+            FloatLayout:
+                id: lista
+                size_hint_y: None
+                height: max(300, self.minimum_height) if self.children else 300
+                width: self.parent.width
+
 
 <ListaDenunciaAssedio>
     orientation: 'vertical'

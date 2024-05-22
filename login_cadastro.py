@@ -1,6 +1,9 @@
 from kivy.app import App
 from conexao import connect
-from bd import insert, update, delete, query, register, login
+from bd import insert, insert_proximo, update, delete, query, register, login
+from kivy.uix.label import Label
+from kivy.uix.gridlayout import GridLayout
+from kivy.uix.scrollview import ScrollView
 from datetime import datetime
 from usuario import Usuario
 from kivy.uix.boxlayout import BoxLayout
@@ -223,8 +226,20 @@ class AbrirOcorrencia(FloatLayout):
         self.voltarparatelainicial.bind(on_release=partial(self.voltar_para_tela_inicial))
         self.ocorrencia_prox = self.ids.ocorrencia_prox
         self.botao_enviar_ocorrencia = self.ids.botao_enviar_ocorrencia
+        self.botao_enviar_ocorrencia.bind(on_release=partial(self.insert_ocorrencia_amigo))
         self.endereço_amigo = self.ids.endereco_amigo
         self.reference = self.ids.reference
+
+    def insert_ocorrencia_amigo(self, instance):
+        Nome_completo_proximo = self.nome_completo.text
+        Cpf_proximo = self.cpf.text
+        Data_nasc_proximo = self.data_nascimento.text
+        Email_ou_telefone_proximo = self.email.text
+        Endereco_proximo = self.endereço_amigo.text
+        Local_referencia = self.reference.text
+        Descricao = self.ocorrencia_prox.text
+
+        insert_proximo(mydb ,Nome_completo_proximo, Cpf_proximo, Data_nasc_proximo, Email_ou_telefone_proximo, Endereco_proximo, Local_referencia, Descricao)
 
     def voltar_para_tela_inicial(self, instance):
         icone_casa = TelaInicial()
@@ -259,15 +274,15 @@ class Ocorrencia(FloatLayout):
         self.suadescricao = self.ids.suadescricao
 
     def insert_ocorrencia(self, instance):
-        Nome_completo_proximo = self.nomeseu_completo.text
-        Cpf_proximo = self.seucpf.text
-        Data_nasc_proximo = self.suadata_nasc.text
-        Email_proximo = self.seuemail.text
-        Endereco_proximo = self.seuendereco.text
-        Local_referencia = self.suareferencia
-        #Descricao_ocorrencia = self.suadescricao.text
+        Nome = self.nomeseu_completo.text
+        Cpf = self.seucpf.text
+        Data_nasc = self.suadata_nasc.text
+        Email_ou_telefone = self.seuemail.text
+        Endereco = self.seuendereco.text
+        Lugar_referencia = self.suareferencia.text
+        Descricao = self.suadescricao.text
 
-        insert(mydb, Nome_completo_proximo, Cpf_proximo, Data_nasc_proximo, Email_proximo, Endereco_proximo, Local_referencia)
+        insert(mydb, Nome, Cpf, Data_nasc, Email_ou_telefone, Endereco, Lugar_referencia, Descricao)
 
     def apertar_voltar(self, instance):
         voltar_casinha = TelaInicial()
@@ -289,8 +304,40 @@ class ListaDenunciaAssalto(FloatLayout):
     def on_kv_post(self, base_widget):
         # Widgets são acessíveis após o arquivo KV ser carregado
         self.listar_assalto = self.ids.listar_assalto
+        self.listar_assalto.bind(on_release=partial(self.aparecer_lista))
         self.setinha = self.ids.setinha
         self.setinha.bind(on_release=partial(self.setinha_voltar))
+
+    def aparecer_lista(self, instance):
+        mydb = connect()
+        dados = query(mydb)
+        self.mostrar_lista(dados)  
+
+    def mostrar_lista(self, dados):
+        self.ids.lista.clear_widgets()
+
+        # Criar um FloatLayout para a lista
+        lista_layout = FloatLayout(size_hint_y=None)
+        lista_layout_height = 0
+
+        # Adicionar cada item da lista
+        for dado in dados:
+            label = Label(text=str(dado), size_hint=(None, None), size=(self.width, 40))
+            label.pos_hint = {'center_x': 0.5, 'top': 1.0 - lista_layout_height}
+            lista_layout.add_widget(label)
+            lista_layout_height += 0.1  # Ajuste conforme necessário para o espaçamento entre os itens
+
+        # Adicionar o FloatLayout à ScrollView
+        scroll_view = ScrollView(size_hint=(1, 1), pos_hint={'center_x': 0.5, 'center_y': 0.5}, do_scroll_y=True)
+        scroll_view.add_widget(lista_layout)
+
+        # Adicionar a ScrollView ao FloatLayout principal
+        self.add_widget(scroll_view)
+
+
+    def setinha_voltar(self, instance):
+        setinha = ListaOcorrencias()
+        setinha.open()  
 
     def setinha_voltar(self, instance):
         setinha = ListaOcorrencias()
@@ -312,8 +359,15 @@ class ListaDenunciaAssedio(FloatLayout):
     def on_kv_post(self, base_widget):
         # Widgets são acessíveis após o arquivo KV ser carregado
         self.listar_assedio = self.ids.listar_assedio
+        self.listar_assedio.bind(on_release=partial(self.abrir_lista))
         self.miniseta = self.ids.miniseta
         self.miniseta.bind(on_release=partial(self.miniseta_voltar))
+
+    def abrir_lista(self, instance):
+        mydb = connect()
+        dados = query(mydb)
+        self.mostrar_lista(dados)
+
 
     def miniseta_voltar(self, instance):
         volte = ListaOcorrencias()
