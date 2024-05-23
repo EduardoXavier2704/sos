@@ -6,7 +6,7 @@
     FloatLayout:
 
         Image:
-            source:'/Users/aluno.sesipaulista/Desktop/sos/images/logoinicialapp.jpg'
+            source:'/Users/debor/Desktop/sos/images/logoinicialapp.jpg'
             size_hint: None, None
             size: 1200, 400
             pos_hint: {'center_x': 0.5, 'center_y': 0.55}
@@ -29,7 +29,7 @@
     FloatLayout:
 
         Image:
-            source: '/Users/aluno.sesipaulista/Desktop/sos/images/logo.png'
+            source: '/Users/debor/Desktop/sos/images/logo.png'
             size_hint: None, None
             size: 745, 150
             pos_hint: {'center_x': 0.5, 'center_y': 0.82}
@@ -127,7 +127,7 @@
             pos_hint: {'center_x': 0.04, 'top': 0.97}
 
         Image:
-            source: '/Users/aluno.sesipaulista/Desktop/sos/images/arrowleft.jpeg'
+            source: '/Users/debor/Desktop/sos/images/arrowleft.jpeg'
             size_hint: None, None
             size: 745, 30
             pos_hint: {'center_x': 0.04, 'center_y': .95}
@@ -221,7 +221,7 @@
     FloatLayout:
 
         Image:
-            source: '/Users/aluno.sesipaulista/Desktop/sos/images/logo.png'
+            source: '/Users/debor/Desktop/sos/images/logo.png'
             size_hint: None, None
             size: 745, 70
             pos_hint: {'center_x': 0.05, 'center_y': .92}
@@ -305,7 +305,7 @@
             pos_hint: {'center_x': 0.05, 'top': 0.97}
 
         Image:
-            source: '/Users/aluno.sesipaulista/Desktop/sos/images/iconecasa.png'
+            source: '/Users/debor/Desktop/sos/images/iconecasa.png'
             size_hint: None, None
             size: 745, 34
             pos_hint: {'center_x': 0.05, 'center_y': .95}
@@ -329,7 +329,7 @@
             pos_hint: {'center_x': 0.5, 'top': 0.85}  # Posiciona o Label abaixo dos botões e centralizado horizontalmente
 
         Label:
-            text: 'Denúncia:Assalto'
+            text: 'Listas de suas Ocorrências'
             font_size: 20
             font_name: 'Georgia'
             color: get_color_from_hex('#E7D7C9')
@@ -346,10 +346,9 @@
             size_hint: None, None
             size: 150, 50
             pos_hint: {'center_x': 0.5, 'top': 0.65}  # Posiciona o botão no topo e centralizado horizontalmente
-            color: (0, 0, 0, 1)  # Cor do texto
 
         Label:
-            text: 'Denúncia:Assédio'
+            text: 'Lista de Denúncia de Ajuda'
             font_size: 20
             font_name: 'Georgia'
             color: get_color_from_hex('#E7D7C9')
@@ -365,7 +364,6 @@
             size_hint: None, None
             size: 150, 50
             pos_hint: {'center_x': 0.5, 'top': 0.45}  # Posiciona o botão no topo e centralizado horizontalmente
-            color: (0, 0, 0, 1)  # Cor do texto
 
         Label:
             text: 'Nessa janela estarão todas as suas ocorrências.'
@@ -400,7 +398,7 @@
             pos_hint: {'center_x': 0.05, 'top': 0.97}
 
         Image:
-            source: '/Users/aluno.sesipaulista/Desktop/sos/images/iconecasa.png'
+            source: '/Users/debor/Desktop/sos/images/iconecasa.png'
             size_hint: None, None
             size: 745, 34
             pos_hint: {'center_x': 0.05, 'center_y': .95}
@@ -412,7 +410,7 @@
             color: (0.69, 0.52, 0.58, 1)
             size_hint: None, None
             size: self.texture_size[0], self.texture_size[1]
-            pos_hint: {'center_x': 0.501, 'top': 0.901}
+            pos_hint: {'center_x': 0.501, 'top': 0.962}
 
         Label:
             text: "Ocorrência de Ajuda ao Próximo:"
@@ -421,7 +419,24 @@
             color: get_color_from_hex('#610C27')
             size_hint: None, None
             size: self.texture_size[0], self.texture_size[1]
-            pos_hint: {'center_x': 0.5, 'top': 0.9}
+            pos_hint: {'center_x': 0.5, 'top': 0.96}
+
+        Label:
+            text: "Tipo da Ocorrência:"
+            font_name: 'Arial'
+            color: get_color_from_hex('#AC9C8D')
+            font_size: 15
+            size_hint: None, None
+            size: self.texture_size[0], self.texture_size[1]
+            pos_hint: {'center_x': 0.16, 'top': 0.85}
+
+        TextInput:
+            id: tipo_ocorrencia_proximo
+            hint_text: "Relate o tipo da ocorrência..."
+            size_hint: None, None
+            size: 400, 35
+            pos_hint: {'center_x': 0.5, 'center_y': 0.84}
+
 
         Label:
             text: "Nome Completo:"
@@ -574,7 +589,7 @@
             pos_hint: {'center_x': 0.05, 'top': 0.96}
 
         Image:
-            source: '/Users/aluno.sesipaulista/Desktop/sos/images/iconecasa.png'
+            source: '/Users/debor/Desktop/sos/images/iconecasa.png'
             size_hint: None, None
             size: 745, 30
             pos_hint: {'center_x': 0.05, 'center_y': .95}
@@ -586,7 +601,7 @@
             color: (0.69, 0.52, 0.58, 1)
             size_hint: None, None
             size: self.texture_size[0], self.texture_size[1]
-            pos_hint: {'center_x': 0.502, 'top': 0.902}
+            pos_hint: {'center_x': 0.502, 'top': 0.962}
 
         Label:
             text: "Informações de Ocorrência:"
@@ -595,7 +610,23 @@
             color: get_color_from_hex('#610C27')
             size_hint: None, None
             size: self.texture_size[0], self.texture_size[1]
-            pos_hint: {'center_x': 0.5, 'top': 0.9}
+            pos_hint: {'center_x': 0.5, 'top': 0.96}
+
+        Label:
+            text: "Tipo da Ocorrência:"
+            font_name: 'Arial'
+            color: get_color_from_hex('#AC9C8D')
+            font_size: 15
+            size_hint: None, None
+            size: self.texture_size[0], self.texture_size[1]
+            pos_hint: {'center_x': 0.16, 'top': 0.85}
+
+        TextInput:
+            id: tipo_ocorrencia
+            hint_text: "Relate o tipo da ocorrência ..."
+            size_hint: None, None
+            size: 400, 35
+            pos_hint: {'center_x': 0.5, 'center_y': 0.84}
 
         Label:
             text: "Nome Completo:"
@@ -750,13 +781,13 @@
             pos_hint: {'center_x': 0.04, 'top': 0.97}
 
         Image:
-            source: '/Users/aluno.sesipaulista/Desktop/sos/images/arrowleft.jpeg'
+            source: '/Users/debor/Desktop/sos/images/arrowleft.jpeg'
             size_hint: None, None
             size: 745, 30
             pos_hint: {'center_x': 0.04, 'center_y': .95}
 
         Label:
-            text: "Lista de Assalto"
+            text: "Lista de Minhas Denúncias"
             font_size: 45
             font_name: 'Georgia'
             color: (0.69, 0.52, 0.58, 1)
@@ -765,7 +796,7 @@
             pos_hint: {'center_x': 0.502, 'top': 0.9015}
 
         Label:
-            text: "Lista de Assalto"
+            text: "Lista de Minhas Denúncias"
             font_size: 45
             font_name: 'Georgia'
             color: get_color_from_hex('#610C27')
@@ -824,13 +855,13 @@
             pos_hint: {'center_x': 0.04, 'top': 0.97}
 
         Image:
-            source: '/Users/aluno.sesipaulista/Desktop/sos/images/arrowleft.jpeg'
+            source: '/Users/debor/Desktop/sos/images/arrowleft.jpeg'
             size_hint: None, None
             size: 745, 30
             pos_hint: {'center_x': 0.04, 'center_y': .95}
 
         Label:
-            text: "Lista de Assédio"
+            text: "Lista de Denúncia de Ajuda"
             font_size: 45
             font_name: 'Georgia'
             color: (0.69, 0.52, 0.58, 1)
@@ -839,7 +870,7 @@
             pos_hint: {'center_x': 0.502, 'top': 0.902}
 
         Label:
-            text: "Lista de Assédio"
+            text: "Lista de Denúncia de Ajuda"
             font_size: 45
             font_name: 'Georgia'
             color: get_color_from_hex('#610C27')
@@ -873,3 +904,14 @@
             size_hint: None, None
             size: 225, 45
             pos_hint: {'center_x': 0.5, 'top': 0.2}
+
+        ScrollView:
+            size_hint: None, None
+            size: 300, max(300, lista.height)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+            FloatLayout:
+                id: lista
+                size_hint_y: None
+                height: max(300, self.minimum_height) if self.children else 300
+                width: self.parent.width

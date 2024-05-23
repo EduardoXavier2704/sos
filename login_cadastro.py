@@ -1,6 +1,6 @@
 from kivy.app import App
 from conexao import connect
-from bd import insert, insert_proximo, update, delete, query, register, login
+from bd import insert, insert_proximo, update, delete, query, lista, register, login
 from kivy.uix.label import Label
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.scrollview import ScrollView
@@ -218,6 +218,7 @@ class AbrirOcorrencia(FloatLayout):
 
     def on_kv_post(self, base_widget):
         # Widgets são acessíveis após o arquivo KV ser carregado
+        self.tipo_ocorrencia_proximo = self.ids.tipo_ocorrencia_proximo
         self.nome_completo = self.ids.nome_completo
         self.cpf = self.ids.cpf
         self.data_nascimento = self.ids.data_nascimento
@@ -231,6 +232,7 @@ class AbrirOcorrencia(FloatLayout):
         self.reference = self.ids.reference
 
     def insert_ocorrencia_amigo(self, instance):
+        Tipo_ocorrencia_proximo = self.tipo_ocorrencia_proximo.text
         Nome_completo_proximo = self.nome_completo.text
         Cpf_proximo = self.cpf.text
         Data_nasc_proximo = self.data_nascimento.text
@@ -239,7 +241,7 @@ class AbrirOcorrencia(FloatLayout):
         Local_referencia = self.reference.text
         Descricao = self.ocorrencia_prox.text
 
-        insert_proximo(mydb ,Nome_completo_proximo, Cpf_proximo, Data_nasc_proximo, Email_ou_telefone_proximo, Endereco_proximo, Local_referencia, Descricao)
+        insert_proximo(mydb, Tipo_ocorrencia_proximo, Nome_completo_proximo, Cpf_proximo, Data_nasc_proximo, Email_ou_telefone_proximo, Endereco_proximo, Local_referencia, Descricao)
 
     def voltar_para_tela_inicial(self, instance):
         icone_casa = TelaInicial()
@@ -265,6 +267,7 @@ class Ocorrencia(FloatLayout):
         self.enviar_ocorrencia_botao.bind(on_release=partial(self.insert_ocorrencia))
         self.seta_voltar = self.ids.seta_voltar
         self.seta_voltar.bind(on_release=partial(self.apertar_voltar))
+        self.tipo_ocorrencia = self.ids.tipo_ocorrencia
         self.nomeseu_completo = self.ids.nomeseu_completo
         self.seucpf = self.ids.seucpf
         self.suadata_nasc = self.ids.suadata_nasc
@@ -274,6 +277,7 @@ class Ocorrencia(FloatLayout):
         self.suadescricao = self.ids.suadescricao
 
     def insert_ocorrencia(self, instance):
+        tipo_ocorrencia = self.tipo_ocorrencia.text
         Nome = self.nomeseu_completo.text
         Cpf = self.seucpf.text
         Data_nasc = self.suadata_nasc.text
@@ -282,7 +286,7 @@ class Ocorrencia(FloatLayout):
         Lugar_referencia = self.suareferencia.text
         Descricao = self.suadescricao.text
 
-        insert(mydb, Nome, Cpf, Data_nasc, Email_ou_telefone, Endereco, Lugar_referencia, Descricao)
+        insert(mydb, tipo_ocorrencia, Nome, Cpf, Data_nasc, Email_ou_telefone, Endereco, Lugar_referencia, Descricao)
 
     def apertar_voltar(self, instance):
         voltar_casinha = TelaInicial()
@@ -322,13 +326,13 @@ class ListaDenunciaAssalto(FloatLayout):
 
         # Adicionar cada item da lista
         for dado in dados:
-            label = Label(text=str(dado), size_hint=(None, None), size=(self.width, 40))
+            label = Label(text=str(dado), font_size= 12, font_name= 'Arial', size_hint=(None, None), size=(self.width, 60))
             label.pos_hint = {'center_x': 0.5, 'top': 1.0 - lista_layout_height}
             lista_layout.add_widget(label)
             lista_layout_height += 0.1  # Ajuste conforme necessário para o espaçamento entre os itens
 
         # Adicionar o FloatLayout à ScrollView
-        scroll_view = ScrollView(size_hint=(1, 1), pos_hint={'center_x': 0.5, 'center_y': 0.5}, do_scroll_y=True)
+        scroll_view = ScrollView(size_hint=(1, 0.2), pos_hint={'center_x': 0.5, 'center_y': 0.5}, do_scroll_y=True)
         scroll_view.add_widget(lista_layout)
 
         # Adicionar a ScrollView ao FloatLayout principal
@@ -365,8 +369,29 @@ class ListaDenunciaAssedio(FloatLayout):
 
     def abrir_lista(self, instance):
         mydb = connect()
-        dados = query(mydb)
-        self.mostrar_lista(dados)
+        dados = lista(mydb)
+        self.trazer_lista(dados)
+
+    def trazer_lista(self, dados):
+        self.ids.lista.clear_widgets()
+
+        # Criar um FloatLayout para a lista
+        lista_layout = FloatLayout(size_hint_y=None)
+        lista_layout_height = 0
+
+        # Adicionar cada item da lista
+        for dado in dados:
+            label = Label(text=str(dado), font_size= 12, font_name= 'Arial', size_hint=(None, None), size=(self.width, 60))
+            label.pos_hint = {'center_x': 0.5, 'top': 1.0 - lista_layout_height}
+            lista_layout.add_widget(label)
+            lista_layout_height += 0.1  # Ajuste conforme necessário para o espaçamento entre os itens
+
+        # Adicionar o FloatLayout à ScrollView
+        scroll_view = ScrollView(size_hint=(1, 0.2), pos_hint={'center_x': 0.5, 'center_y': 0.5}, do_scroll_y=True)
+        scroll_view.add_widget(lista_layout)
+
+        # Adicionar a ScrollView ao FloatLayout principal
+        self.add_widget(scroll_view)
 
 
     def miniseta_voltar(self, instance):
